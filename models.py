@@ -15,7 +15,7 @@ dbname = app.config['DB_NAME']
 dbuser = app.config['DB_USER']
 dbpassword = app.config['DB_PASSWORD']
 
-psql_db = PostgresqlDatabase('dbtest', user='jelian', password='1234')
+psql_db = PostgresqlDatabase(dbname, user=dbuser, password=dbpassword)
 
 class User(UserMixin, Model):
     username = CharField(unique=True)
