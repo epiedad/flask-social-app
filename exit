@@ -1,0 +1,6 @@
+ id  |   username    |       email        |                           password                           |         joined_at          | is_admin 
+-----+---------------+--------------------+--------------------------------------------------------------+----------------------------+----------
+ 110 | testuser      | testuser@email.com | $2b$12$YPBXPKxwvsPYrhkCfvwRR.oZ.PEw6wVkv8UvelFQ06/GWT7y8t90a | 2016-09-07 22:50:33.749555 | f
+  64 | eliantipiedad | email@email.com    | password                                                     | 2016-09-07 02:51:07.602851 | f
+(2 rows)
+
