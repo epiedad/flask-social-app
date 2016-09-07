@@ -1,6 +1,6 @@
 import datetime
+import os
 
-from main import app
 from peewee import *
 
 #Need to install this Foreign Function Interface
@@ -11,11 +11,13 @@ from peewee import *
 from flask_bcrypt import generate_password_hash
 from flask_login import UserMixin
 
-dbname = app.config['DB_NAME']
-dbuser = app.config['DB_USER']
-dbpassword = app.config['DB_PASSWORD']
-
-psql_db = PostgresqlDatabase(dbname, user=dbuser, password=dbpassword)
+if 'HEROKU' in os.environ:
+    import urlparse, psycopg2
+    urlparse.uses_netloc.append('postgres')
+    url = urlparse.urlparse(os.environ["DATABASE_URL"])
+    psql_db = PostgresqlDatabase(database=url.path[1:], user=url.username, password=url.password, host=url.hostname, port=url.port)
+else:
+    psql_db = PostgresqlDatabase('dbtest', user='jelian', password='1234')
 
 class User(UserMixin, Model):
     username = CharField(unique=True)
