@@ -1,6 +1,7 @@
 import datetime
 
 from peewee import *
+from app import app
 
 #Need to install this Foreign Function Interface
 #because `pip install flask-bcrypt throws an error:
@@ -9,6 +10,10 @@ from peewee import *
 
 from flask_bcrypt import generate_password_hash
 from flask_login import UserMixin
+
+dbname = app.config['DB_NAME']
+dbuser = app.config['DB_USER']
+dbpassword = app.config['DB_PASSWORD']
 
 psql_db = PostgresqlDatabase('dbtest', user='jelian', password='1234')
 

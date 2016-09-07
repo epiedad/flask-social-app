@@ -9,12 +9,10 @@ import models
 
 from peewee import IntegrityError
 
-DEBUG = True
-HOST= '0.0.0.0'
-PORT = 5000 
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object('config')
+app.config.from_pyfile('config.py')
 
-app = Flask(__name__)
-app.secret_key = 'fdsa32432$4324sfdf'
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -165,8 +163,6 @@ def not_found(error):
 
 
 
-
-
 if __name__ == '__main__':
     models.initialize()
     try:
@@ -178,4 +174,4 @@ if __name__ == '__main__':
         )
     except IntegrityError:
         pass
-    app.run(debug=DEBUG, host=HOST, port=PORT)
+    app.run()
