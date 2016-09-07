@@ -1,7 +1,7 @@
 import datetime
 
+from main import app
 from peewee import *
-from app import app
 
 #Need to install this Foreign Function Interface
 #because `pip install flask-bcrypt throws an error:
